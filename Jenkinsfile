@@ -9,7 +9,7 @@ pipeline{
     
     stage("Test"){
       steps{
-        sh 'apt install npm'
+        sh 'npm install'
         sh 'npm test'
       }
     }
@@ -17,6 +17,12 @@ pipeline{
     stage("Build"){
       steps{
         sh 'npm run build'
+      }
+    }
+
+    stage("Build Image"){
+      steps{
+        sh 'docker build -t my-node-app:1.0 .'
       }
     }
   }
