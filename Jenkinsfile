@@ -20,7 +20,12 @@ pipeline{
     
     stage("Build"){
       steps{
-        sh 'npm run build'
+        nodejs('Node'){
+          echo 'Testing application .....'
+          sh 'npm install'
+          sh 'npm run build'
+        }
+        
       }
     }
 
