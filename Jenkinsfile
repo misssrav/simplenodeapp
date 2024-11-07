@@ -1,9 +1,5 @@
 pipeline{
-  agent{
-    docker{
-      image 'node:latest'
-    }
-  }
+  agent any
   stages{
     stage("checkout"){
       steps{
@@ -13,8 +9,12 @@ pipeline{
     
     stage("Test"){
       steps{
+        nodejs('Node'){
+          echo 'Testing application .....'
+          sh 'npm install'
+          sh 'npm test'
+        }
         
-        sh 'npm test'
       }
     }
     
