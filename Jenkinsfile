@@ -11,8 +11,8 @@ pipeline{
       steps{
         nodejs('Node'){
           echo 'Testing application .....'
-          bat 'npm install'
-          bat 'npm test'
+          sh 'npm install'
+          sh 'npm test'
         }
         
       }
@@ -22,15 +22,15 @@ pipeline{
       steps{
         nodejs('Node'){
           echo 'Testing application .....'
-          bat 'npm install'
-          bat 'npm run build'
+          sh 'npm install'
+          sh 'npm run build'
         }
       }
         
       }
     stage("Build Image"){
       steps{
-        bat 'docker build -t my-node-app:1.0 .'
+        sh 'docker build -t my-node-app:1.0 .'
       }
     }
 
